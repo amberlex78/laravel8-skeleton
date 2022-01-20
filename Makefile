@@ -14,7 +14,7 @@ docker-up:
 docker-down:
 	docker-compose down --remove-orphans
 
-exec:
+bash:
 	docker-compose exec php bash
 
 #-----------------------------------------------------------
