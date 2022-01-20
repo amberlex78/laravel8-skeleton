@@ -7,12 +7,28 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+
+        "admin-dev": "cross-env process.env.SECTION=admin npm run dev",
+        "admin-prod": "cross-env process.env.SECTION=admin npm run prod",
+
+        "front-dev": "cross-env process.env.SECTION=front npm run dev",
+        "front-prod": "cross-env process.env.SECTION=front npm run prod"
     },
     "devDependencies": {
         "axios": "^0.21",
+        "cross-env": "^7.0.3",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "sass": "^1.49.0",
+        "sass-loader": "^12.4.0"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.4",
+        "@popperjs/core": "^2.11.2",
+        "bootstrap": "^5.1.3",
+        "jquery": "^3.6.0",
+        "startbootstrap-sb-admin": "^7.0.4"
     }
 }
