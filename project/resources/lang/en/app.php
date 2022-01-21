@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'dashboard' => 'Dashboard',
+    'actions' => 'Actions',
+    'save' => 'Save',
+    'add' => 'Add',
+    'list' => 'List',
+    'index' => 'List',
+    'create' => 'Create',
+    'created' => 'Created',
+    'edit' => 'Edit',
+    'edited' => 'Edited',
+    'delete' => 'Delete',
+    'deleted' => 'Deleted',
+    'show' => 'Show',
+    'enabled' => 'Enabled',
+    'position' => 'Position',
+    'created_at' => 'Created At',
+    'updated_at' => 'Updated At',
+    'accordion_common_title' => 'Common',
+    'accordion_seo_title' => 'SEO (Search Engine Optimization)',
+    'slug' => 'Slug',
+    'seo_title' => 'HTML title',
+    'seo_keywords' => 'META keywords',
+    'seo_description' => 'META description',
+];
