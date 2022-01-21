@@ -32,6 +32,8 @@
                     <div class="form-check form-switch">
                         <label>
                             <input {{ $item->enabled ? 'checked' : '' }}
+                                   data-url="{{ route('admin.ajax.booleanChange', ['id' => $item->id]) }}"
+                                   data-model="{{ \App\Models\Page::class }}"
                                    class="form-check-input js-checkbox-status"
                                    type="checkbox" style="cursor: pointer">
                         </label>
