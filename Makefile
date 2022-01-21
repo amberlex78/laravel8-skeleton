@@ -19,7 +19,7 @@ bash:
 
 #-----------------------------------------------------------
 # Setup
-setup: composer-install key db-fresh db-seed
+setup: composer-install npm-install run-front-dev run-admin-dev db-fresh db-seed
 
 #-----------------------------------------------------------
 # composer
@@ -27,6 +27,15 @@ composer-install:
 	docker-compose exec php composer install
 composer-update:
 	docker-compose exec php composer update
+
+#-----------------------------------------------------------
+# npm
+npm-install:
+	docker-compose exec php npm install
+run-front-dev:
+	docker-compose exec php npm run front-dev
+run-admin-dev:
+	docker-compose exec php npm run admin-dev
 
 #-----------------------------------------------------------
 # php artisan
