@@ -67,13 +67,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN cp $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 COPY ./conf.d $PHP_INI_DIR/conf.d
 
-# Config Git
-RUN git config --global user.email "username@email.com" && \
-    git config --global user.name "username"
-
-# Symfony
-RUN wget https://get.symfony.com/cli/installer -O - | bash && \
-    mv /root/.symfony/bin/symfony /usr/local/bin && \
-    echo 'alias s="php bin/console"' >> ~/.bashrc
-
 WORKDIR /app
