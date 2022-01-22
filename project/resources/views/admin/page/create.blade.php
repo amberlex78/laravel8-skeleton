@@ -1,8 +1,8 @@
 @extends('admin.layouts.body_card')
 
 @section('breadcrumbs')
-    <li class="breadcrumb-item"><a href="{{ route('admin.page.index') }}">Pages</a></li>
-    <li class="breadcrumb-item active">Create</li>
+    <li class="breadcrumb-item"><a href="{{ urlToAction('index') }}">{{ __('page.card_header.index') }}</a></li>
+    <li class="breadcrumb-item active">{{ __('page.card_header.create') }}</li>
 @endsection
 
 @section('content')

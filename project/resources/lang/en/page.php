@@ -12,8 +12,7 @@ return [
     'field' => [
         'id' => 'Id',
         'title' => 'Title',
-        'title_menu' => 'Menu Title',
-        'description' => 'Description',
         'content' => 'Content',
+        'is_active' => 'Is active',
     ],
 ];

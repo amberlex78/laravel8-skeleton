@@ -29,10 +29,14 @@ class PageFactory extends Factory
         return [
             'slug' => Str::slug($title),
             'title' => $title,
-            'title_menu' => $title,
-            'short_text' => $this->faker->paragraph(5),
-            'full_text' => $this->faker->paragraph(10),
-            'enabled' => random_int(0, 1),
+            'content' => implode(
+                "\r\n",
+                array_map(
+                    fn($paragraph) => '<p>' . $paragraph . '</p>',
+                    $this->faker->paragraphs(rand(5, 10))
+                )
+            ),
+            'is_active' => random_int(0, 1),
         ];
     }
 }

@@ -19,13 +19,10 @@ class PageSeeder extends Seeder
         DB::table('pages')->insert([
             [
                 'id' => 1,
-                'parent_id' => 0,
                 'slug' => 'about',
                 'title' => 'About',
-                'title_menu' => 'About',
-                'short_text' => 'About us description',
-                'full_text' => 'About us text',
-                'enabled' => 1,
+                'content' => 'About us text',
+                'is_active' => 1,
                 'created_at' => Carbon::yesterday(),
                 'updated_at' => Carbon::today(),
             ],

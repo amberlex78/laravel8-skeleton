@@ -26,7 +26,7 @@ class PageController extends AdminController
      */
     public function index()
     {
-        $model = Page::orderBy('position')->paginate(10);
+        $model = Page::orderBy('created_at', 'desc')->paginate(10);
 
         return view('admin.page.index', compact('model'));
     }
@@ -44,8 +44,8 @@ class PageController extends AdminController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateRequest  $request
-     * @param  Page  $model
+     * @param CreateRequest $request
+     * @param Page $model
      *
      * @return Application|RedirectResponse|Redirector
      */
@@ -53,13 +53,13 @@ class PageController extends AdminController
     {
         $model->create($request->all());
 
-        return redirect(urlToAction('index'))->with('success', __('app.created'));;
+        return redirect(urlToAction('index'))->with('success', __('app.created'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Page  $model
+     * @param Page $model
      *
      * @return Application|Factory|View
      */
@@ -71,8 +71,8 @@ class PageController extends AdminController
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateRequest  $request
-     * @param  Page  $model
+     * @param UpdateRequest $request
+     * @param Page $model
      *
      * @return Application|RedirectResponse|Redirector
      */
@@ -86,7 +86,7 @@ class PageController extends AdminController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Page  $model
+     * @param Page $model
      * @return Redirector|RedirectResponse|Application
      */
     public function destroy(Page $model)

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class AjaxController extends Controller
 {
-    public const FIELD_IS_ACTIVE = 'enabled';
+    public const FIELD_IS_ACTIVE = 'is_active';
 
     /**
      * @param int $id

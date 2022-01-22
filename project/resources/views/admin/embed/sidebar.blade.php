@@ -3,11 +3,11 @@
         <div class="nav">
             <a class="nav-link{{ Route::currentRouteName() === 'admin.dashboard' ? ' active' : '' }}" href="{{ route('admin.dashboard') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-fw fa-tachometer-alt"></i></div>
-                Dashboard
+                {{ __('app.dashboard') }}
             </a>
             <a class="nav-link{{ Str::is('admin.page.*', Route::currentRouteName()) ? ' active' : '' }}" href="{{ route('admin.page.index') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-fw fa-copy"></i></div>
-                Pages
+                {{ __('page.sidenav_title') }}
             </a>
         </div>
     </div>

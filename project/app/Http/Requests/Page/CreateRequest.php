@@ -24,10 +24,10 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|max:255',
-            'content' => 'required',
             'slug' => 'max:255',
-            'enabled' => 'required|boolean',
+            'title' => 'required|min:2|max:255',
+            'content' => 'required|min:10',
+            'is_active' => 'required|boolean',
         ];
     }
 }
