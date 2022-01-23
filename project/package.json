@@ -8,6 +8,8 @@
         "hot": "mix watch --hot",
         "prod": "npm run production",
         "production": "mix --production",
+        "vendor-admin": "cross-env process.env.SECTION=vendor-admin npm run prod",
+        "vendor-front": "cross-env process.env.SECTION=vendor-front npm run prod",
         "admin-dev": "cross-env process.env.SECTION=admin npm run dev",
         "admin-prod": "cross-env process.env.SECTION=admin npm run prod",
         "front-dev": "cross-env process.env.SECTION=front npm run dev",
