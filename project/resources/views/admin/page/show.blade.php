@@ -3,25 +3,16 @@
 @php /** @var Page $model */ use App\Models\Page @endphp
 
 @section('breadcrumbs')
-    <li class="breadcrumb-item"><a href="{{ urlToAction('index') }}">{{ __('page.card_header.index') }}</a></li>
-    <li class="breadcrumb-item active">{{ __('page.card_header.show') }}</li>
+    @include('admin.layouts.breadcrumbs', ['breadcrumbs' => [
+        'index' => __('page.card_header.index'),
+        'last' => __('page.card_header.show'),
+    ]])
 @endsection
 
 @section('actions')
-    <a href="{{ urlToAction('create') }}" class="btn btn-outline-success btn-sm shadow-sm">
-        <i class="fas fa-plus fa-sm fa-fw"></i>
-    </a>
-    <a href="{{ urlToAction('edit', $model) }}" class="btn btn-outline-primary btn-sm shadow-sm">
-        <i class="fas fa-pen fa-sm fa-fw"></i>
-    </a>
-    {{ Form::model($model, ['url' => urlToAction('destroy', $model), 'id' => 'form'.$model->id, 'method' => 'DELETE', 'class' => 'd-inline']) }}
-        <button type="button" class="btn btn-outline-danger btn-sm shadow-sm"
-                data-bs-toggle="modal" data-bs-target="#modalConfirmDelete"
-                data-entity-id="{{ $model->id }}">
-            <i class="fa fa-trash fa-fw fa-sm"></i>
-        </button>
-    {{ Form::close() }}
-    @include('admin.embed.modal.confirm_delete')
+    {{ Form::bsBtnCreate() }}
+    {{ Form::bsBtnEdit($model) }}
+    {{ Form::bsBtnDelete($model, true) }}
 @endsection
 
 @section('content')

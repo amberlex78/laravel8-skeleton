@@ -3,13 +3,13 @@
 @php /** @var Page $item */ use App\Models\Page @endphp
 
 @section('breadcrumbs')
-    <li class="breadcrumb-item active">{{ __('page.card_header.index') }}</li>
+    @include('admin.layouts.breadcrumbs', ['breadcrumbs' => [
+        'last' => __('page.card_header.index'),
+    ]])
 @endsection
 
 @section('actions')
-    <a href="{{ urlToAction('create') }}" class="btn btn-outline-success btn-sm shadow-sm">
-        <i class="fas fa-plus fa-sm fa-fw"></i> {{ __('page.card_header.create') }}
-    </a>
+    {{ Form::bsBtnCreate(__('page.card_header.create')) }}
 @endsection
 
 @section('content')
@@ -44,26 +44,10 @@
                 </td>
                 <td>{{ $item->created_at->format('d-m-Y, H:i:s') }}</td>
                 <td>
-                    {{-- Edit --}}
-                    <a href="{{ urlToAction('edit', $item) }}" class="btn btn-outline-primary btn-sm">
-                        <i class="fa fa-pen fa-fw fa-sm"></i>
-                    </a>
-                    {{-- Show --}}
-                    <a href="{{ urlToAction('show', $item) }}" class="btn btn-outline-secondary btn-sm">
-                        <i class="fas fa-eye fa-sm fa-fw"></i>
-                    </a>
-                    {{-- Front --}}
-                    <a href="#" class="btn btn-outline-success btn-sm" target="_blank">
-                        <i class="fas fa-external-link-alt fa-fw fa-sm"></i>
-                    </a>
-                    {{-- Delete --}}
-                    {{ Form::model($item, ['url' => urlToAction('destroy', $item), 'id' => 'form'.$item->id, 'method' => 'DELETE', 'class' => 'd-inline']) }}
-                        <button type="button" class="btn btn-outline-danger btn-sm shadow-sm"
-                                data-bs-toggle="modal" data-bs-target="#modalConfirmDelete"
-                                data-entity-id="{{ $item->id }}">
-                            <i class="fa fa-trash fa-fw fa-sm"></i>
-                        </button>
-                    {{ Form::close() }}
+                    {{ Form::bsBtnEdit($item) }}
+                    {{ Form::bsBtnShow($item) }}
+                    {{ Form::bsBtnFront('#') }}
+                    {{ Form::bsBtnDelete($item, false) }}
                 </td>
             </tr>
         @empty
