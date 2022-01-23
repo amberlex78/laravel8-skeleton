@@ -19,7 +19,6 @@
             <th>{{ __('app.slug') }}</th>
             <th>{{ __('page.field.is_active') }}</th>
             <th>{{ __('app.created_at') }}</th>
-            <th>{{ __('app.updated_at') }}</th>
             <th>{{ __('app.actions') }}</th>
         </tr>
         </thead>
@@ -40,17 +39,32 @@
                         </label>
                     </div>
                 </td>
-                <td>{{ $item->created_at->format('d-m-Y, H:i') }}</td>
-                <td>{{ $item->updated_at->format('d-m-Y, H:i') }}</td>
+                <td>{{ $item->created_at->format('d-m-Y, H:i:s') }}</td>
                 <td>
-                    {{ Html::link(urlToAction('edit', $item), __('app.edit')) }}
+                    {{-- Edit --}}
+                    <a href="{{ urlToAction('edit', $item) }}" class="btn btn-outline-primary btn-sm">
+                        <i class="fa fa-pen fa-fw fa-sm"></i>
+                    </a>
+                    {{-- Front --}}
+                    <a href="#" class="btn btn-outline-success btn-sm" target="_blank">
+                        <i class="fas fa-external-link-alt fa-fw fa-sm"></i>
+                    </a>
+                    {{-- Delete --}}
+                    {{ Form::model($item, ['url' => urlToAction('destroy', $item), 'id' => 'form'.$item->id, 'method' => 'DELETE', 'class' => 'd-inline']) }}
+                        <button type="button" class="btn btn-outline-danger btn-sm shadow-sm"
+                                data-bs-toggle="modal" data-bs-target="#modalConfirmDelete"
+                                data-entity-id="{{ $item->id }}">
+                            <i class="fa fa-trash fa-fw fa-sm"></i>
+                        </button>
+                    {{ Form::close() }}
                 </td>
             </tr>
         @empty
             <tr>
-                <td colspan="7">{{ __('no_records_found') }}</td>
+                <td colspan="6">{{ __('no_records_found') }}</td>
             </tr>
         @endforelse
         </tbody>
     </table>
+    @include('admin.embed.modal.confirm_delete')
 @endsection

@@ -22,7 +22,7 @@
 <div class="row mb-3">
     <label for="content" class="col-sm-2 col-form-label required">{{ __('page.field.content') }}</label>
     <div class="col-sm-10">
-        {{ Form::textarea('content', null, ['class' => $errors->has('content') ? ['form-control is-invalid'] : ['form-control']]) }}
+        {{ Form::textarea('content', null, ['class' => $errors->has('content') ? ['form-control is-invalid'] : ['form-control'], 'required']) }}
         @error('content')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
