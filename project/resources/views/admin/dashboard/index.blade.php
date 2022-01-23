@@ -5,14 +5,14 @@
         <div class="col-lg-5">
             <div class="card mb-4">
                 <div class="card-header">
-                    <p class="lead mb-0"><i class="fas fa-fw fa-copy fa-fw me-1"></i> Pages</p>
+                    <p class="lead mb-0"><i class="fas fa-fw fa-copy fa-fw me-1"></i> {{ __('page.sidenav_title') }}</p>
                 </div>
                 <div class="card-body">
                     <a href="{{ route('admin.page.create') }}" class="btn btn-outline-success btn-block btn-sm my-1">
-                        <i class="fas fa-plus fa-sm fa-fw me-1"></i> Create Page
+                        <i class="fas fa-plus fa-sm fa-fw me-1"></i> {{ __('page.card_header.create') }}
                     </a>
                     <a href="{{ route('admin.page.index') }}" class="btn btn-outline-secondary btn-block btn-sm my-1">
-                        <i class="fas fa-list fa-sm fa-fw me-1"></i> List Pages
+                        <i class="fas fa-list fa-sm fa-fw me-1"></i> {{ __('page.card_header.index') }}
                     </a>
                 </div>
             </div>

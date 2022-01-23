@@ -12,19 +12,12 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 
-/**
- * Class PageController
- *
- * @package App\Http\Controllers\Admin\Content
- */
 class PageController extends AdminController
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return Application|Factory|View
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
         $model = Page::orderBy('created_at', 'desc')->paginate(10);
 
@@ -33,66 +26,55 @@ class PageController extends AdminController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Application|Factory|View
      */
-    public function create()
+    public function create(): Factory|View|Application
     {
         return view('admin.page.create');
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param CreateRequest $request
-     * @param Page $model
-     *
-     * @return Application|RedirectResponse|Redirector
+     * Display the specified resource.
      */
-    public function store(CreateRequest $request, Page $model)
+    public function show(Page $model): Factory|View|Application
+    {
+        return view('admin.page.show', compact('model'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(CreateRequest $request, Page $model): Redirector|RedirectResponse|Application
     {
         $model->create($request->all());
 
-        return redirect(urlToAction('index'))->with('success', __('app.created'));
+        return redirect(urlToAction('index'))->with('success', __('page.created'));
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param Page $model
-     *
-     * @return Application|Factory|View
      */
-    public function edit(Page $model)
+    public function edit(Page $model): Factory|View|Application
     {
         return view('admin.page.edit', compact('model'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param UpdateRequest $request
-     * @param Page $model
-     *
-     * @return Application|RedirectResponse|Redirector
      */
-    public function update(UpdateRequest $request, Page $model)
+    public function update(UpdateRequest $request, Page $model): Redirector|RedirectResponse|Application
     {
         $model->update($request->all());
 
-        return redirect(urlToAction('index'))->with('success', __('app.edited'));
+        return redirect(urlToAction('index'))->with('success', __('page.updated'));
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param Page $model
-     * @return Redirector|RedirectResponse|Application
      */
-    public function destroy(Page $model)
+    public function destroy(Page $model): Redirector|Application|RedirectResponse
     {
         $model->delete();
 
-        return redirect(urlToAction('index'))->with('success', __('app.deleted'));
+        return redirect(urlToAction('index'))->with('success', __('page.deleted'));
     }
 }

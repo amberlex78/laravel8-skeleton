@@ -1,17 +1,19 @@
 @extends('admin.layouts.body_card')
 
+@php /** @var Page $item */ use App\Models\Page @endphp
+
 @section('breadcrumbs')
     <li class="breadcrumb-item active">{{ __('page.card_header.index') }}</li>
 @endsection
 
 @section('actions')
-    <a href="{{ route('admin.page.create') }}" class="btn btn-outline-success btn-sm shadow-sm">
+    <a href="{{ urlToAction('create') }}" class="btn btn-outline-success btn-sm shadow-sm">
         <i class="fas fa-plus fa-sm fa-fw"></i> {{ __('page.card_header.create') }}
     </a>
 @endsection
 
 @section('content')
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover table-responsive">
         <thead>
         <tr>
             <th>{{ __('page.field.id') }}</th>
@@ -31,11 +33,12 @@
                 <td>
                     <div class="form-check form-switch">
                         <label>
-                            <input {{ $item->is_active ? 'checked' : '' }}
-                                   data-url="{{ route('admin.ajax.booleanChange', ['id' => $item->id]) }}"
-                                   data-model="{{ \App\Models\Page::class }}"
-                                   class="form-check-input js-checkbox-status"
-                                   type="checkbox" style="cursor: pointer">
+                            {{ Form::checkbox('is_active', null, $item->is_active, [
+                                'data-url' => route('admin.ajax.booleanChange', ['id' => $item->id]),
+                                'data-model' => \App\Models\Page::class,
+                                'class' => 'form-check-input js-checkbox-status',
+                                'style' => 'cursor: pointer',
+                            ]) }}
                         </label>
                     </div>
                 </td>
@@ -44,6 +47,10 @@
                     {{-- Edit --}}
                     <a href="{{ urlToAction('edit', $item) }}" class="btn btn-outline-primary btn-sm">
                         <i class="fa fa-pen fa-fw fa-sm"></i>
+                    </a>
+                    {{-- Show --}}
+                    <a href="{{ urlToAction('show', $item) }}" class="btn btn-outline-secondary btn-sm">
+                        <i class="fas fa-eye fa-sm fa-fw"></i>
                     </a>
                     {{-- Front --}}
                     <a href="#" class="btn btn-outline-success btn-sm" target="_blank">

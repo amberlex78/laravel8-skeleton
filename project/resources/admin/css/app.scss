@@ -5,3 +5,6 @@ label.required:after {
     color: red;
     padding-left: 2px;
 }
+table tbody tr th {
+    white-space: nowrap;
+}

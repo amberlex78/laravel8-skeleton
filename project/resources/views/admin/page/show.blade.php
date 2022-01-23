@@ -4,18 +4,15 @@
 
 @section('breadcrumbs')
     <li class="breadcrumb-item"><a href="{{ urlToAction('index') }}">{{ __('page.card_header.index') }}</a></li>
-    <li class="breadcrumb-item active">{{ __('page.card_header.edit') }}</li>
+    <li class="breadcrumb-item active">{{ __('page.card_header.show') }}</li>
 @endsection
 
 @section('actions')
-    <button type="button" class="btn btn-primary btn-sm shadow-sm js-btn-save-form">
-        <i class="fas fa-save fa-sm fa-fw"></i> {{ __('app.save') }}
-    </button>
     <a href="{{ urlToAction('create') }}" class="btn btn-outline-success btn-sm shadow-sm">
         <i class="fas fa-plus fa-sm fa-fw"></i>
     </a>
-    <a href="{{ urlToAction('show', $model) }}" class="btn btn-outline-secondary btn-sm shadow-sm">
-        <i class="fas fa-eye fa-sm fa-fw"></i>
+    <a href="{{ urlToAction('edit', $model) }}" class="btn btn-outline-primary btn-sm shadow-sm">
+        <i class="fas fa-pen fa-sm fa-fw"></i>
     </a>
     {{ Form::model($model, ['url' => urlToAction('destroy', $model), 'id' => 'form'.$model->id, 'method' => 'DELETE', 'class' => 'd-inline']) }}
         <button type="button" class="btn btn-outline-danger btn-sm shadow-sm"
@@ -28,7 +25,15 @@
 @endsection
 
 @section('content')
-    {{ Form::model($model, ['url' => urlToAction('update', $model), 'name' => 'entityForm', 'method' => 'PUT']) }}
-        @include ('admin.page._form')
-    {{ Form::close() }}
+    <table class="table table-hover">
+        <tbody>
+        <tr><th>{{ __('page.field.id') }}</th><td>{{ $model->id }}</td></tr>
+        <tr><th>{{ __('app.slug') }}</th><td>{{ $model->slug }}</td></tr>
+        <tr><th>{{ __('page.field.title') }}</th><td>{{ $model->title }}</td></tr>
+        <tr><th>{{ __('page.field.content') }}</th><td>{!! $model->content  !!}</td></tr>
+        <tr><th>{{ __('page.field.is_active') }}</th><td>{{ $model->is_active_human }}</td></tr>
+        <tr><th>{{ __('app.created_at') }}</th><td>{{ $model->created_at }}</td></tr>
+        <tr><th>{{ __('app.updated_at') }}</th><td>{{ $model->updated_at }}</td></tr>
+        </tbody>
+    </table>
 @endsection

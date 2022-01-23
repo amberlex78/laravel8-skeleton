@@ -14,7 +14,7 @@ Route::group(['as' => 'admin.', 'middleware' => 'admin', 'prefix' => 'backend'],
             ->name('booleanChange')->where('id', '[0-9]+');
     });
 
-    Route::resource('page', PageController::class)->except('show');
+    Route::resource('page', PageController::class);
 });
 
 Route::group(['as' => 'front.', 'middleware' => 'front'], static function () {

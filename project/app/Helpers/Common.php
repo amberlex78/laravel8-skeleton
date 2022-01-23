@@ -2,7 +2,7 @@
 
 if (!function_exists('urlToAction')) {
     /**
-     * Generate the URL to a controller action.
+     * Generate URL for the action in current controller.
      *
      * @param string $name
      * @param mixed $parameters
@@ -10,7 +10,7 @@ if (!function_exists('urlToAction')) {
      *
      * @return string
      */
-    function urlToAction(string $name, $parameters = [], bool $absolute = true): string
+    function urlToAction(string $name, mixed $parameters = [], bool $absolute = true): string
     {
         $actionPath = '\\' . Request::route()->getActionName();
         [$controller] = explode('@', $actionPath);
