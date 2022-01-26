@@ -19,7 +19,7 @@ bash:
 
 #-----------------------------------------------------------
 # Setup
-setup: composer-install npm-install run-front-dev run-admin-dev db-fresh db-seed
+setup: composer-install npm-install run-all db-fresh db-seed
 
 #-----------------------------------------------------------
 # composer
@@ -32,8 +32,16 @@ composer-update:
 # npm
 npm-install:
 	docker-compose exec php npm install
+
+run-all: run-front-vendor run-front-dev run-admin-vendor run-admin-dev
+
+run-front-vendor:
+	docker-compose exec php npm run front-vendor
 run-front-dev:
 	docker-compose exec php npm run front-dev
+
+run-admin-vendor:
+	docker-compose exec php npm run admin-vendor
 run-admin-dev:
 	docker-compose exec php npm run admin-dev
 

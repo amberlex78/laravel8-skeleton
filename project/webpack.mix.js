@@ -11,8 +11,8 @@ mix.setPublicPath(path.normalize('public/' + SECTION)).setResourceRoot('../')
 
 // Admin section
 
-if (SECTION === 'vendor-admin') {
-    mix.copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/vendor-admin/webfonts')
+if (SECTION === 'admin-vendor') {
+    mix.copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/admin-vendor/webfonts')
         .sass('resources/admin/css/vendor.scss', 'css')
         .js('resources/admin/js/vendor.js', 'js')
 }
@@ -25,8 +25,8 @@ if (SECTION === 'admin') {
 
 // Front section
 
-if (SECTION === 'vendor-front') {
-    mix.copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/vendor-front/webfonts')
+if (SECTION === 'front-vendor') {
+    mix.copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/front-vendor/webfonts')
         .sass('resources/front/css/vendor.scss', 'css')
         .js('resources/front/js/vendor.js', 'js')
 }

@@ -1,8 +1,8 @@
 /node_modules
 public/admin
-public/vendor-admin
+public/admin-vendor
 public/front
-public/vendor-front
+public/front-vendor
 /public/hot
 /public/storage
 /storage/*.key
