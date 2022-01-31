@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name') }}</title>
-    <link href="{{ mix('css/vendor.css', 'vendor-admin') }}" rel="stylesheet">
+    <link href="{{ mix('css/vendor.css', 'admin-vendor') }}" rel="stylesheet">
     <link href="{{ mix('css/app.css', 'admin') }}" rel="stylesheet">
     @stack('styles')
 </head>
 <body class="sb-nav-fixed">
 @yield('body')
-<script src="{{ mix('js/vendor.js', 'vendor-admin') }}"></script>
+<script src="{{ mix('js/vendor.js', 'admin-vendor') }}"></script>
 <script src="{{ mix('js/app.js', 'admin') }}"></script>
 @stack('scripts')
 </body>
