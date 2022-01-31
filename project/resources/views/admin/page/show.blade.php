@@ -3,7 +3,7 @@
 @php /** @var Page $model */ use App\Models\Page @endphp
 
 @section('breadcrumbs')
-    @include('admin.layouts.breadcrumbs', ['breadcrumbs' => [
+    @include('admin.embed.breadcrumbs', ['breadcrumbs' => [
         'index' => __('page.card_header.index'),
         'last' => __('page.card_header.show'),
     ]])
